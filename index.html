@@ -88,7 +88,17 @@ body::before{
   padding:28px 24px 24px;
   backdrop-filter:blur(10px);
 }
-.eyebrow{display:inline-block; margin-bottom:10px; padding:6px 12px; border-radius:999px; background:linear-gradient(135deg, #fbf4fb, #f1ebf6); color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.08em;}
+.eyebrow{
+  display:inline-block;
+  margin-bottom:10px;
+  padding:6px 12px;
+  border-radius:999px;
+  background:linear-gradient(135deg, #fbf4fb, #f1ebf6);
+  color:var(--accent);
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.08em;
+}
 .page-title{
   margin:0;
   font-family:"Hiragino Sans","Yu Gothic","Meiryo","Noto Sans JP",sans-serif;
@@ -98,37 +108,240 @@ body::before{
   letter-spacing:.05em;
   color:var(--accent-deep);
 }
-.thanks{margin-top:18px; padding:18px; border-radius:18px; background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(251,246,251,.94)); border:1px solid var(--border); color:var(--sub); box-shadow:var(--shadow-soft); font-size:15.5px;}
-.thanks a{color:#6a4d88; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(106,77,136,.35);}
+.thanks{
+  margin-top:18px;
+  padding:18px;
+  border-radius:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(251,246,251,.94));
+  border:1px solid var(--border);
+  color:var(--sub);
+  box-shadow:var(--shadow-soft);
+  font-size:15.5px;
+}
+.thanks a{
+  color:#6a4d88;
+  font-weight:700;
+  text-decoration:none;
+  border-bottom:1px solid rgba(106,77,136,.35);
+}
 .container{max-width:1100px; margin:0 auto; padding:34px 20px 90px;}
-.section-card, .song-list{background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.84)); border:1px solid rgba(255,255,255,.92); padding:28px 22px; border-radius:26px; box-shadow:var(--shadow); backdrop-filter:blur(10px);}
+.section-card, .song-list{
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.84));
+  border:1px solid rgba(255,255,255,.92);
+  padding:28px 22px;
+  border-radius:26px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(10px);
+}
 .section-card{margin-bottom:38px;}
 .section-card h2, .song-list h2{margin:0 0 14px; font-size:24px; line-height:1.4;}
 .section-card p, .song-list p{margin:0; color:var(--sub); font-size:14px;}
-.playlist-box iframe{display:block; width:100%; min-height:380px; border:none; border-radius:18px; box-shadow:0 10px 22px rgba(0,0,0,.08); background:#fff; margin-top:16px;}
+
+.playlist-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+.playlist-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:999px;
+  text-decoration:none;
+  color:var(--accent-deep);
+  font-weight:700;
+  background:linear-gradient(180deg, rgba(255,255,255,.98), rgba(249,243,248,.98));
+  border:1px solid rgba(125, 102, 122, .14);
+  box-shadow:0 8px 18px rgba(83, 70, 86, .06);
+  transition:transform .22s ease, box-shadow .22s ease, background .22s ease;
+}
+.playlist-link:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 24px rgba(83, 70, 86, .1);
+  background:linear-gradient(180deg, #fff, #faf5fb);
+}
+.playlist-embed-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:16px;
+}
+.playlist-panel{
+  background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(250,245,249,.9));
+  border:1px solid rgba(125, 102, 122, .12);
+  border-radius:20px;
+  padding:14px;
+}
+.playlist-panel h3{
+  margin:0 0 10px;
+  font-size:16px;
+  color:var(--accent-deep);
+}
+.playlist-panel iframe{
+  display:block;
+  width:100%;
+  border:none;
+  border-radius:16px;
+  box-shadow:0 10px 22px rgba(0,0,0,.08);
+  background:#fff;
+}
+.spotify-embed{min-height:352px;}
+.youtube-embed{min-height:352px;}
+
 .song-list{margin-bottom:60px;}
 .song-list p{margin-bottom:18px;}
-.song-grid{display:flex; flex-direction:column; gap:12px;}
-.song-grid a{display:block; text-decoration:none; color:var(--text); background:linear-gradient(180deg, rgba(255,255,255,.97), rgba(251,247,251,.97)); border:1px solid rgba(125, 102, 122, .14); border-radius:16px; padding:14px 16px; box-shadow:0 8px 18px rgba(83, 70, 86, .06); transition:transform .22s ease, box-shadow .22s ease, background .22s ease;}
-.song-grid a:hover{transform:translateY(-2px); box-shadow:0 14px 24px rgba(83, 70, 86, .1); background:linear-gradient(180deg, #fff, #faf5fb);}
-.song-grid .song-no{display:inline-block; min-width:2.4em; margin-right:8px; color:var(--accent); font-weight:700;}
-.song-grid .song-name{display:block; font-weight:700; font-size:16px;}
-.song-grid .song-artist{display:block; margin-top:2px; color:var(--sub); font-size:14px;}
-.song-card{background:linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.87)); border:1px solid rgba(255,255,255,.92); padding:28px 24px; border-radius:26px; margin-bottom:34px; box-shadow:var(--shadow); opacity:0; transform:translateY(34px); transition:all .75s ease; backdrop-filter:blur(8px);}
+.song-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:12px;
+}
+.song-grid a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:var(--text);
+  background:linear-gradient(180deg, rgba(255,255,255,.97), rgba(251,247,251,.97));
+  border:1px solid rgba(125, 102, 122, .14);
+  border-radius:16px;
+  padding:13px 16px;
+  box-shadow:0 8px 18px rgba(83, 70, 86, .06);
+  transition:transform .22s ease, box-shadow .22s ease, background .22s ease;
+  min-width:0;
+}
+.song-grid a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 24px rgba(83, 70, 86, .1);
+  background:linear-gradient(180deg, #fff, #faf5fb);
+}
+.song-grid .song-no{
+  flex:0 0 auto;
+  min-width:2.5em;
+  padding:4px 8px;
+  border-radius:999px;
+  background:var(--accent-light);
+  color:var(--accent);
+  font-weight:700;
+  font-size:13px;
+  line-height:1.2;
+  text-align:center;
+}
+.song-grid .song-text{
+  min-width:0;
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  flex-wrap:nowrap;
+  overflow:hidden;
+}
+.song-grid .song-name{
+  font-weight:700;
+  font-size:15px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.song-grid .song-artist{
+  color:var(--sub);
+  font-size:13px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  flex-shrink:1;
+}
+.song-grid .song-artist::before{
+  content:"—";
+  margin-right:8px;
+  color:rgba(103,93,105,.55);
+}
+
+.song-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.87));
+  border:1px solid rgba(255,255,255,.92);
+  padding:28px 24px;
+  border-radius:26px;
+  margin-bottom:34px;
+  box-shadow:var(--shadow);
+  opacity:0;
+  transform:translateY(34px);
+  transition:all .75s ease;
+  backdrop-filter:blur(8px);
+}
 .song-card.show{opacity:1; transform:none;}
 .song-meta{margin-bottom:14px;}
-.song-number{display:inline-block; margin-bottom:8px; padding:4px 10px; border-radius:999px; background:var(--accent-light); color:var(--accent); font-size:13px; font-weight:700;}
+.song-number{
+  display:inline-block;
+  margin-bottom:8px;
+  padding:4px 10px;
+  border-radius:999px;
+  background:var(--accent-light);
+  color:var(--accent);
+  font-size:13px;
+  font-weight:700;
+}
 .song-title{font-size:28px; line-height:1.35; font-weight:800; letter-spacing:.02em;}
 .artist{margin-top:4px; color:var(--sub); font-size:17px;}
 .player-wrap{margin-top:18px;}
-.player-wrap iframe{display:block; width:100%; aspect-ratio:16 / 9; min-height:220px; border:none; border-radius:18px; box-shadow:0 10px 22px rgba(0,0,0,.08); background:#fff;}
-.comment{margin-top:18px; background:linear-gradient(180deg, rgba(246,241,247,.95), rgba(243,238,245,.95)); border:1px solid rgba(125, 102, 122, .12); padding:16px 18px; border-radius:16px; color:#504851;}
+.player-wrap iframe{
+  display:block;
+  width:100%;
+  aspect-ratio:16 / 9;
+  min-height:220px;
+  border:none;
+  border-radius:18px;
+  box-shadow:0 10px 22px rgba(0,0,0,.08);
+  background:#fff;
+}
+.comment{
+  margin-top:18px;
+  background:linear-gradient(180deg, rgba(246,241,247,.95), rgba(243,238,245,.95));
+  border:1px solid rgba(125, 102, 122, .12);
+  padding:16px 18px;
+  border-radius:16px;
+  color:#504851;
+}
 .comment-title{display:block; margin-bottom:8px; font-weight:700; color:#5a4a5c;}
-.comment p{margin:0 0 12px; white-space:normal;}
+.comment p{
+  margin:0 0 10px;
+  white-space:normal;
+  line-height:1.75;
+}
 .comment p:last-child{margin-bottom:0;}
-.lyric-quote{margin:14px 0; padding:14px 16px; border-left:4px solid #b592bc; border-radius:0 12px 12px 0; background:rgba(255,255,255,.62); color:#5b4f5d; font-style:italic; box-shadow:inset 0 0 0 1px rgba(181,146,188,.12);}
-.lyric-quote::before{content:"♪ 歌詞引用"; display:block; margin-bottom:8px; font-size:12px; font-weight:700; font-style:normal; color:#8a6f88; letter-spacing:.04em;}
+.comment br:only-child{display:none;}
+
+.lyric-quote{
+  margin:8px 0 10px;
+  padding:12px 16px;
+  border-left:4px solid #b592bc;
+  border-radius:0 12px 12px 0;
+  background:rgba(255,255,255,.62);
+  color:#5b4f5d;
+  font-style:italic;
+  line-height:1.7;
+  box-shadow:inset 0 0 0 1px rgba(181,146,188,.12);
+}
+.lyric-quote::before{
+  content:"♪ 歌詞引用";
+  display:block;
+  margin-bottom:6px;
+  font-size:12px;
+  font-weight:700;
+  font-style:normal;
+  line-height:1.4;
+  color:#8a6f88;
+  letter-spacing:.04em;
+}
+.lyric-quote + p{
+  margin-top:0;
+}
 .footer{text-align:center; color:#7f7680; margin-top:52px; font-size:14px;}
+
+@media (max-width:900px){
+  .playlist-embed-grid{grid-template-columns:1fr;}
+}
+
 @media (max-width:768px){
   .bg-logo{width:185vw; bottom:-1vh; opacity:.18;}
   .hero-image{max-height:52vh;}
@@ -140,22 +353,23 @@ body::before{
   .container{padding:24px 14px 80px;}
   .section-card, .song-list{padding:22px 16px; border-radius:22px;}
   .section-card h2, .song-list h2{font-size:21px;}
-  .playlist-box iframe{min-height:300px;}
+  .song-grid{grid-template-columns:1fr;}
   .song-grid a{padding:13px 14px;}
   .song-card{padding:22px 16px; border-radius:22px; margin-bottom:26px;}
   .song-title{font-size:23px;}
   .artist{font-size:15px;}
   .player-wrap iframe{min-height:200px;}
   .comment{font-size:14px;}
-  .lyric-quote{padding:12px 14px;}
+  .lyric-quote{padding:11px 14px;}
+  .spotify-embed,.youtube-embed{min-height:320px;}
 }
 @media (max-width:480px){
   .bg-logo{width:210vw; bottom:2vh; opacity:.16;}
   .hero-image{max-height:44vh;}
-  .playlist-box iframe{min-height:260px;}
-  .song-grid .song-name{font-size:15px;}
-  .song-grid .song-artist{font-size:13px;}
+  .song-grid .song-name{font-size:14px;}
+  .song-grid .song-artist{font-size:12px;}
   .player-wrap iframe{min-height:180px;}
+  .spotify-embed,.youtube-embed{min-height:300px;}
 }
 </style>
 </head>
@@ -184,142 +398,69 @@ body::before{
   <main class="container">
     <section class="section-card playlist-box">
       <h2>🎧 プレイリスト</h2>
-      <p>応募いただいた楽曲をまとめて楽しめるプレイリストです。</p>
-      <iframe
-        src="https://www.youtube.com/embed/videoseries?list=プレイリストID"
-        title="イメージソング企画 プレイリスト"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
+      <p>応募いただいた楽曲を、SpotifyとYouTubeのプレイリストでまとめて楽しめます。</p>
+
+      <div class="playlist-links">
+        <a class="playlist-link" href="https://open.spotify.com/playlist/7yf6RGgHneVXH9FPm0ArJl?si=XMB616XgR_yvTUtbRHW-wQ" target="_blank" rel="noopener noreferrer">Spotifyで開く</a>
+        <a class="playlist-link" href="https://www.youtube.com/watch?v=k-5drkaQVoU&list=PL7EDA-3rosROvl1vJMM24ly03x5lTENmZ" target="_blank" rel="noopener noreferrer">YouTubeで開く</a>
+      </div>
+
+      <div class="playlist-embed-grid">
+        <div class="playlist-panel">
+          <h3>Spotify</h3>
+          <iframe
+            class="spotify-embed"
+            src="https://open.spotify.com/embed/playlist/7yf6RGgHneVXH9FPm0ArJl?utm_source=generator"
+            title="Spotify プレイリスト"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="playlist-panel">
+          <h3>YouTube</h3>
+          <iframe
+            class="youtube-embed"
+            src="https://www.youtube.com/embed/videoseries?list=PL7EDA-3rosROvl1vJMM24ly03x5lTENmZ"
+            title="YouTube プレイリスト"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
     </section>
 
     <section class="song-list">
       <h2>🎵 イメージソング一覧</h2>
       <p>気になる曲名をタップ・クリックすると、下の該当箇所へ移動します。</p>
       <div class="song-grid">
-        <a href="#song2">
-          <span class="song-no">01</span>
-          <span class="song-name">swamp</span>
-          <span class="song-artist">iri</span>
-        </a>
-        <a href="#song1">
-          <span class="song-no">02</span>
-          <span class="song-name">フォニイ</span>
-          <span class="song-artist">ツミキ</span>
-        </a>
-        <a href="#song3">
-          <span class="song-no">03</span>
-          <span class="song-name">Rather Be</span>
-          <span class="song-artist">△Clean Bandit</span>
-        </a>
-        <a href="#song4">
-          <span class="song-no">04</span>
-          <span class="song-name">Sugar</span>
-          <span class="song-artist">Maroon 5</span>
-        </a>
-        <a href="#song5">
-          <span class="song-no">05</span>
-          <span class="song-name">餃子</span>
-          <span class="song-artist">TOMOO</span>
-        </a>
-        <a href="#song6">
-          <span class="song-no">06</span>
-          <span class="song-name">白日</span>
-          <span class="song-artist">King Gnu</span>
-        </a>
-        <a href="#song7">
-          <span class="song-no">07</span>
-          <span class="song-name">二人セゾン</span>
-          <span class="song-artist">欅坂46</span>
-        </a>
-        <a href="#song8">
-          <span class="song-no">08</span>
-          <span class="song-name">光の街</span>
-          <span class="song-artist">back number</span>
-        </a>
-        <a href="#song9">
-          <span class="song-no">09</span>
-          <span class="song-name">Story</span>
-          <span class="song-artist">AI</span>
-        </a>
-        <a href="#song10">
-          <span class="song-no">10</span>
-          <span class="song-name">雲路の果て</span>
-          <span class="song-artist">Cocco</span>
-        </a>
-        <a href="#song11">
-          <span class="song-no">11</span>
-          <span class="song-name">冷たい雨</span>
-          <span class="song-artist">cali≠gari</span>
-        </a>
-        <a href="#song12">
-          <span class="song-no">12</span>
-          <span class="song-name">Ms.OOJA</span>
-          <span class="song-artist">30</span>
-        </a>
-        <a href="#song13">
-          <span class="song-no">13</span>
-          <span class="song-name">Acid Black Cherry</span>
-          <span class="song-artist">未来予想図Ⅱ</span>
-        </a>
-        <a href="#song14">
-          <span class="song-no">14</span>
-          <span class="song-name">義務のように</span>
-          <span class="song-artist">坂本慎太郎</span>
-        </a>
-        <a href="#song15">
-          <span class="song-no">15</span>
-          <span class="song-name">まなざしは光</span>
-          <span class="song-artist">キタニタツヤ</span>
-        </a>
-        <a href="#song16">
-          <span class="song-no">16</span>
-          <span class="song-name">ある男</span>
-          <span class="song-artist">エイハブ</span>
-        </a>
-        <a href="#song17">
-          <span class="song-no">17</span>
-          <span class="song-name">瞼の裏のアトリエ、光のカーテンは夜を包む</span>
-          <span class="song-artist">こんにちは谷田さん</span>
-        </a>
-        <a href="#song18">
-          <span class="song-no">18</span>
-          <span class="song-name">ド屑</span>
-          <span class="song-artist">なきそ</span>
-        </a>
-        <a href="#song19">
-          <span class="song-no">19</span>
-          <span class="song-name">終列車</span>
-          <span class="song-artist">椿屋四重奏</span>
-        </a>
-        <a href="#song20">
-          <span class="song-no">20</span>
-          <span class="song-name">LOVER</span>
-          <span class="song-artist">椿屋四重奏</span>
-        </a>
-        <a href="#song21">
-          <span class="song-no">21</span>
-          <span class="song-name">sneer</span>
-          <span class="song-artist">こめだわら</span>
-        </a>
-        <a href="#song22">
-          <span class="song-no">22</span>
-          <span class="song-name">熱異常</span>
-          <span class="song-artist">いよわ</span>
-        </a>
-        <a href="#song23">
-          <span class="song-no">23</span>
-          <span class="song-name">循環</span>
-          <span class="song-artist">HoneyComeBear</span>
-        </a>
-        <a href="#song24">
-          <span class="song-no">24</span>
-          <span class="song-name">Gospelion in a classic love</span>
-          <span class="song-artist">The 13th tailor</span>
-        </a>
+        <a href="#song2"><span class="song-no">01</span><span class="song-text"><span class="song-name">swamp</span><span class="song-artist">iri</span></span></a>
+        <a href="#song1"><span class="song-no">02</span><span class="song-text"><span class="song-name">フォニイ</span><span class="song-artist">ツミキ</span></span></a>
+        <a href="#song3"><span class="song-no">03</span><span class="song-text"><span class="song-name">Rather Be</span><span class="song-artist">△Clean Bandit</span></span></a>
+        <a href="#song4"><span class="song-no">04</span><span class="song-text"><span class="song-name">Sugar</span><span class="song-artist">Maroon 5</span></span></a>
+        <a href="#song5"><span class="song-no">05</span><span class="song-text"><span class="song-name">餃子</span><span class="song-artist">TOMOO</span></span></a>
+        <a href="#song6"><span class="song-no">06</span><span class="song-text"><span class="song-name">白日</span><span class="song-artist">King Gnu</span></span></a>
+        <a href="#song7"><span class="song-no">07</span><span class="song-text"><span class="song-name">二人セゾン</span><span class="song-artist">欅坂46</span></span></a>
+        <a href="#song8"><span class="song-no">08</span><span class="song-text"><span class="song-name">光の街</span><span class="song-artist">back number</span></span></a>
+        <a href="#song9"><span class="song-no">09</span><span class="song-text"><span class="song-name">Story</span><span class="song-artist">AI</span></span></a>
+        <a href="#song10"><span class="song-no">10</span><span class="song-text"><span class="song-name">雲路の果て</span><span class="song-artist">Cocco</span></span></a>
+        <a href="#song11"><span class="song-no">11</span><span class="song-text"><span class="song-name">冷たい雨</span><span class="song-artist">cali≠gari</span></span></a>
+        <a href="#song12"><span class="song-no">12</span><span class="song-text"><span class="song-name">Ms.OOJA</span><span class="song-artist">30</span></span></a>
+        <a href="#song13"><span class="song-no">13</span><span class="song-text"><span class="song-name">Acid Black Cherry</span><span class="song-artist">未来予想図Ⅱ</span></span></a>
+        <a href="#song14"><span class="song-no">14</span><span class="song-text"><span class="song-name">義務のように</span><span class="song-artist">坂本慎太郎</span></span></a>
+        <a href="#song15"><span class="song-no">15</span><span class="song-text"><span class="song-name">まなざしは光</span><span class="song-artist">キタニタツヤ</span></span></a>
+        <a href="#song16"><span class="song-no">16</span><span class="song-text"><span class="song-name">ある男</span><span class="song-artist">エイハブ</span></span></a>
+        <a href="#song17"><span class="song-no">17</span><span class="song-text"><span class="song-name">瞼の裏のアトリエ、光のカーテンは夜を包む</span><span class="song-artist">こんにちは谷田さん</span></span></a>
+        <a href="#song18"><span class="song-no">18</span><span class="song-text"><span class="song-name">ド屑</span><span class="song-artist">なきそ</span></span></a>
+        <a href="#song19"><span class="song-no">19</span><span class="song-text"><span class="song-name">終列車</span><span class="song-artist">椿屋四重奏</span></span></a>
+        <a href="#song20"><span class="song-no">20</span><span class="song-text"><span class="song-name">LOVER</span><span class="song-artist">椿屋四重奏</span></span></a>
+        <a href="#song21"><span class="song-no">21</span><span class="song-text"><span class="song-name">sneer</span><span class="song-artist">こめだわら</span></span></a>
+        <a href="#song22"><span class="song-no">22</span><span class="song-text"><span class="song-name">熱異常</span><span class="song-artist">いよわ</span></span></a>
+        <a href="#song23"><span class="song-no">23</span><span class="song-text"><span class="song-name">循環</span><span class="song-artist">HoneyComeBear</span></span></a>
+        <a href="#song24"><span class="song-no">24</span><span class="song-text"><span class="song-name">Gospelion in a classic love</span><span class="song-artist">The 13th tailor</span></span></a>
       </div>
     </section>
-
 
     <section class="song-card" id="song2">
       <div class="song-meta">
@@ -339,11 +480,11 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>歌詞が全体的に健啓なのですが、 冒頭の<br></p>
-<blockquote class="lyric-quote">目覚めたばかりの 無意識と<br>なぞらせる 投げやりな儀式よ</blockquote>
-<p><br>が芳野による籠絡のこと！？！となってます。 最後の <br></p>
-<blockquote class="lyric-quote">見失ったって 引き裂かれあって<br>強くなる愛情を<br>睨んでも<br>味わってしまうから<br>逃げれない Get away<br>旅立ちたくて 壊し合う代償を<br>悔やんでも 汚せぬ君の明日</blockquote>
-<p> <br>もかなり再会後の健啓です。</p>
+        <p>歌詞が全体的に健啓なのですが、 冒頭の</p>
+        <blockquote class="lyric-quote">目覚めたばかりの 無意識と<br>なぞらせる 投げやりな儀式よ</blockquote>
+        <p>が芳野による籠絡のこと！？！となってます。 最後の</p>
+        <blockquote class="lyric-quote">見失ったって 引き裂かれあって<br>強くなる愛情を<br>睨んでも<br>味わってしまうから<br>逃げれない Get away<br>旅立ちたくて 壊し合う代償を<br>悔やんでも 汚せぬ君の明日</blockquote>
+        <p>もかなり再会後の健啓です。</p>
       </div>
     </section>
     
@@ -365,9 +506,9 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>美咲さんを失い、健人に復讐をしてる時の啓史の心情にとても合致してるなと思っているイメソンです。<br></p>
-<blockquote class="lyric-quote">簡単なことも解らないわ あたしって何だっけ</blockquote>
-<p><br>とか、EndDを思い浮かべて毎回胸が苦しくなります。</p>
+        <p>美咲さんを失い、健人に復讐をしてる時の啓史の心情にとても合致してるなと思っているイメソンです。</p>
+        <blockquote class="lyric-quote">簡単なことも解らないわ あたしって何だっけ</blockquote>
+        <p>とか、EndDを思い浮かべて毎回胸が苦しくなります。</p>
       </div>
     </section>
     
@@ -389,9 +530,9 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>全体的に健人くんにしっくりくる歌詞なのですが、特に曲を通してリフレインされている<br></p>
-<blockquote class="lyric-quote">When I am with you ,there&#x27;s no place I&#x27;d rather be」(あなたと一緒にいる時、これ以上の場所はない)</blockquote>
-<p><br>が、芳野先生と猫2匹がいるあの家に安寧を見出してる健人くんを思わせるので選びました。 <br>Bメロからのドラマチックなピアノのメロディも、一言では表せない二人のこれまでの人生と展望が見え出して来たこれからの未来に合うんじゃないかなと思います。</p>
+        <p>全体的に健人くんにしっくりくる歌詞なのですが、特に曲を通してリフレインされている</p>
+        <blockquote class="lyric-quote">When I am with you ,there&#x27;s no place I&#x27;d rather be」(あなたと一緒にいる時、これ以上の場所はない)</blockquote>
+        <p>が、芳野先生と猫2匹がいるあの家に安寧を見出してる健人くんを思わせるので選びました。 Bメロからのドラマチックなピアノのメロディも、一言では表せない二人のこれまでの人生と展望が見え出して来たこれからの未来に合うんじゃないかなと思います。</p>
       </div>
     </section>
     <section class="song-card" id="song4">
@@ -433,9 +574,9 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>正直曲名が一番の理由です…が、餃子を<br></p>
-<blockquote class="lyric-quote">なんでもない顔をしていても、何かしらの苦しい思いを抱えてる</blockquote>
-<p><br>人間に見立てている歌詞は芳野先生に通じるものを感じたため挙げました。</p>
+        <p>正直曲名が一番の理由です…が、餃子を</p>
+        <blockquote class="lyric-quote">なんでもない顔をしていても、何かしらの苦しい思いを抱えてる</blockquote>
+        <p>人間に見立てている歌詞は芳野先生に通じるものを感じたため挙げました。</p>
       </div>
     </section>
     <section class="song-card" id="song6">
@@ -498,9 +639,9 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>サビの<br></p>
-<blockquote class="lyric-quote">君は知っているのだろうか こんなにも救われている僕を</blockquote>
-<p><br>が健人視点に重なると思います（もしかしたら啓史にとってもそうかもしれない）。何気ない日常の幸せを描く歌詞や、温かい曲調もlessonの雰囲気に合っていると思います。</p>
+        <p>サビの</p>
+        <blockquote class="lyric-quote">君は知っているのだろうか こんなにも救われている僕を</blockquote>
+        <p>が健人視点に重なると思います（もしかしたら啓史にとってもそうかもしれない）。何気ない日常の幸せを描く歌詞や、温かい曲調もlessonの雰囲気に合っていると思います。</p>
       </div>
     </section>
     <section class="song-card" id="song9">
@@ -542,9 +683,9 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>歌詞の幼い少女のイメージと幼さを持つ健人のイメージがうっすら重なり、また<br></p>
-<blockquote class="lyric-quote">この目さえ光を知らなければ 見えなくていいものがあったよ<br>からだがあなたを知らなければ 引きずる想い出もなかった</blockquote>
-<p><br>の部分にエンドBD後に遺された健人を思い浮かべました</p>
+        <p>歌詞の幼い少女のイメージと幼さを持つ健人のイメージがうっすら重なり、また</p>
+        <blockquote class="lyric-quote">この目さえ光を知らなければ 見えなくていいものがあったよ<br>からだがあなたを知らなければ 引きずる想い出もなかった</blockquote>
+        <p>の部分にエンドBD後に遺された健人を思い浮かべました</p>
       </div>
     </section>
     <section class="song-card" id="song11">
@@ -628,11 +769,11 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>なれあい〜の辺りの啓史。<br></p>
-<blockquote class="lyric-quote">ゆっくり溶け出していく/大切なものがひとつづつ/ああ それを見ている/何もできずに</blockquote>
-<p><br>↑これ啓史 <br></p>
-<blockquote class="lyric-quote">義務のようにほほえんで/義務のようにうつろ</blockquote>
-<p><br>↑とても啓史<br>曲調のダウナーなのに色気のある感じ自体がなれあい〜の啓史っぽいと思います</p>
+        <p>なれあい〜の辺りの啓史。</p>
+        <blockquote class="lyric-quote">ゆっくり溶け出していく/大切なものがひとつづつ/ああ それを見ている/何もできずに</blockquote>
+        <p>↑これ啓史</p>
+        <blockquote class="lyric-quote">義務のようにほほえんで/義務のようにうつろ</blockquote>
+        <p>↑とても啓史<br>曲調のダウナーなのに色気のある感じ自体がなれあい〜の啓史っぽいと思います</p>
       </div>
     </section>
     <section class="song-card" id="song15">
@@ -695,9 +836,9 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>1番は啓史視点の健人。ラスサビ前<br></p>
-<blockquote class="lyric-quote">僕が知らなかったはずの風景にずっと浴槽のように浸っている、君の手に触れたかった</blockquote>
-<p><br>からは再会に至る健人視点になってほしい</p>
+        <p>1番は啓史視点の健人。ラスサビ前</p>
+        <blockquote class="lyric-quote">僕が知らなかったはずの風景にずっと浴槽のように浸っている、君の手に触れたかった</blockquote>
+        <p>からは再会に至る健人視点になってほしい</p>
       </div>
     </section>
     <section class="song-card" id="song18">
@@ -718,9 +859,9 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>初挿入のときの怒り啓史のBGMというかこれだったらドエロいな〜〜〜〜〜ソングです<br> </p>
-<blockquote class="lyric-quote">待ったをかけた ちょっとためらった<br>なんだ なんだ なんなんだあんた</blockquote>
-<p><br>は健人セリフっぽくもあってふふってなります</p>
+        <p>初挿入のときの怒り啓史のBGMというかこれだったらドエロいな〜〜〜〜〜ソングです</p>
+        <blockquote class="lyric-quote">待ったをかけた ちょっとためらった<br>なんだ なんだ なんなんだあんた</blockquote>
+        <p>は健人セリフっぽくもあってふふってなります</p>
       </div>
     </section>
     <section class="song-card" id="song19">
@@ -741,12 +882,12 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>全体的にB/Dの啓史を感じますが、<br> </p>
-<blockquote class="lyric-quote">在りもしない答えに<br>取り憑かれた俺の結末は見えている<br>結ばれているようなその思い違いが<br>仕合わせと言うのなら</blockquote>
-<p> <br>はめっちゃB/D啓史から健人への視線を感じます</p>
+        <p>全体的にB/Dの啓史を感じますが、</p>
+        <blockquote class="lyric-quote">在りもしない答えに<br>取り憑かれた俺の結末は見えている<br>結ばれているようなその思い違いが<br>仕合わせと言うのなら</blockquote>
+        <p>はめっちゃB/D啓史から健人への視線を感じます</p>
       </div>
     </section>
-    <section class="song-card" id="0">
+    <section class="song-card" id="song20">
       <div class="song-meta">
         <span class="song-number">20</span>
         <div class="song-title">LOVER</div>
@@ -767,7 +908,7 @@ body::before{
         <p>Eエンドルートの健人（再会時）はこのくらいの愛の深さで啓史を抱けます</p>
       </div>
     </section>
-    <section class="song-card" id="1">
+    <section class="song-card" id="song21">
       <div class="song-meta">
         <span class="song-number">21</span>
         <div class="song-title">sneer</div>
@@ -785,12 +926,12 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>啓史だなぁと思いながら聴いてます。<br> </p>
-<blockquote class="lyric-quote">おかしなことをひたすら繰り返して<br>誰かがそれを嘲笑う<br>他人事のように嘲笑う</blockquote>
-<p> <br>がなれあい〜の啓史すぎるので</p>
+        <p>啓史だなぁと思いながら聴いてます。</p>
+        <blockquote class="lyric-quote">おかしなことをひたすら繰り返して<br>誰かがそれを嘲笑う<br>他人事のように嘲笑う</blockquote>
+        <p>がなれあい〜の啓史すぎるので</p>
       </div>
     </section>
-    <section class="song-card" id="2">
+    <section class="song-card" id="song22">
       <div class="song-meta">
         <span class="song-number">22</span>
         <div class="song-title">熱異常</div>
@@ -808,20 +949,20 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>イメソンというか脳内でMADが再生されています 。<br></p>
-<blockquote class="lyric-quote">電撃と見紛うような〜黒い星が彼らを見ている</blockquote>
-<p><br>…美咲さんを喪った頃の啓史 。「黒い星が彼らを見ている」は裁判で健人の姿を見ている啓史のスチルの目 <br></p>
-<blockquote class="lyric-quote">哭いた閃光が目に刺さる〜黒い星が私を見ている</blockquote>
-<p><br>…復讐計画を始め、健人に会う啓史 。「黒い星が私を見ている」はパッケージの健人の死んだ目<br></p>
-<blockquote class="lyric-quote">死んだ変数で繰り返す〜すぐそこまで何かが来ている</blockquote>
-<p><br>…本編〜D（B）エンド 。</p>
-<blockquote class="lyric-quote">燕が描いた軌跡を/なぞるように灰色の雲が来ている</blockquote>
-<p>は健人が人間らしくなるにつれて膨らむ啓史の希死念慮<br></p>
-<blockquote class="lyric-quote">編んだ名誉で明日を乞う/希望で手が汚れてる/あなたの澄んだ瞳の色をした星に問いかけている</blockquote>
-<p><br>この部分がかなり濃い目にDエンド直前の啓史を感じる。1番の「あなた」は多分美咲さんだけどこの2番の「あなた」は健人だと思う 。<br>『現実じゃないこんなの』の繰り返しはBエンド発見時の健人とDエンド直前の日々の幸せと本来の目的で離脱症状起きてる啓史の内なる囁きがダブると味が濃い</p>
+        <p>イメソンというか脳内でMADが再生されています 。</p>
+        <blockquote class="lyric-quote">電撃と見紛うような〜黒い星が彼らを見ている</blockquote>
+        <p>…美咲さんを喪った頃の啓史 。「黒い星が彼らを見ている」は裁判で健人の姿を見ている啓史のスチルの目</p>
+        <blockquote class="lyric-quote">哭いた閃光が目に刺さる〜黒い星が私を見ている</blockquote>
+        <p>…復讐計画を始め、健人に会う啓史 。「黒い星が私を見ている」はパッケージの健人の死んだ目</p>
+        <blockquote class="lyric-quote">死んだ変数で繰り返す〜すぐそこまで何かが来ている</blockquote>
+        <p>…本編〜D（B）エンド 。</p>
+        <blockquote class="lyric-quote">燕が描いた軌跡を/なぞるように灰色の雲が来ている</blockquote>
+        <p>は健人が人間らしくなるにつれて膨らむ啓史の希死念慮</p>
+        <blockquote class="lyric-quote">編んだ名誉で明日を乞う/希望で手が汚れてる/あなたの澄んだ瞳の色をした星に問いかけている</blockquote>
+        <p>この部分がかなり濃い目にDエンド直前の啓史を感じる。1番の「あなた」は多分美咲さんだけどこの2番の「あなた」は健人だと思う 。<br>『現実じゃないこんなの』の繰り返しはBエンド発見時の健人とDエンド直前の日々の幸せと本来の目的で離脱症状起きてる啓史の内なる囁きがダブると味が濃い</p>
       </div>
     </section>
-    <section class="song-card" id="3">
+    <section class="song-card" id="song23">
       <div class="song-meta">
         <span class="song-number">23</span>
         <div class="song-title">循環</div>
@@ -839,20 +980,19 @@ body::before{
 
       <div class="comment">
         <span class="comment-title">💬 コメント</span>
-        <p>前半は一周目のEnd:Bまでの健人目線でのイメージで、<br></p>
-<blockquote class="lyric-quote">言葉ひとつで ひとつになって　孤独の味は忘れたようだ<br>くだんねえとか高をくくった　余所見するようになった</blockquote>
-<p><br>がほんとに健人の啓史に対しての感情の変化にぴったりで... <br></p>
-<blockquote class="lyric-quote">それはまるで 熱のように　呪いのように 巡るだけ</blockquote>
-<p><br>の部分から、あらたなつづきに繋がってるな～と勝手に思ってます。 <br><br></p>
-<blockquote class="lyric-quote">循環する 薄荷のにおいが分かるかい 息吹が、分かるかい</blockquote>
-<p><br></p>
-<blockquote class="lyric-quote">それはやがて 酸素にのり 血汐にのり 巡り合う息を継いだ先の日々が 苦しくても 喘いで すがったらいい</blockquote>
-<p><br>の部分がまさにあらたなつづきの「再開」を彷彿とさせる歌詞で勝手に涙ぐんでます。<br><br></p>
-<blockquote class="lyric-quote">繰り返して そこで君が応えるから僕の呼吸は 続いていくんだ 続いていくんだ</blockquote>
-<p><br>の歌詞がEnd:Eの先の未来を見せてもらってるみたいで感無量です...。(この曲を作ったアーティストさんには誠に申し訳ないですが...勝手にイメソンにして萌えました)書けば書くほどこの曲がイメソンにぴったりで驚いたのでしがないオタクの叫びとして共有させてください。</p>
+        <p>前半は一周目のEnd:Bまでの健人目線でのイメージで、</p>
+        <blockquote class="lyric-quote">言葉ひとつで ひとつになって　孤独の味は忘れたようだ<br>くだんねえとか高をくくった　余所見するようになった</blockquote>
+        <p>がほんとに健人の啓史に対しての感情の変化にぴったりで...</p>
+        <blockquote class="lyric-quote">それはまるで 熱のように　呪いのように 巡るだけ</blockquote>
+        <p>の部分から、あらたなつづきに繋がってるな～と勝手に思ってます。</p>
+        <blockquote class="lyric-quote">循環する 薄荷のにおいが分かるかい 息吹が、分かるかい</blockquote>
+        <blockquote class="lyric-quote">それはやがて 酸素にのり 血汐にのり 巡り合う息を継いだ先の日々が 苦しくても 喘いで すがったらいい</blockquote>
+        <p>の部分がまさにあらたなつづきの「再開」を彷彿とさせる歌詞で勝手に涙ぐんでます。</p>
+        <blockquote class="lyric-quote">繰り返して そこで君が応えるから僕の呼吸は 続いていくんだ 続いていくんだ</blockquote>
+        <p>の歌詞がEnd:Eの先の未来を見せてもらってるみたいで感無量です...。(この曲を作ったアーティストさんには誠に申し訳ないですが...勝手にイメソンにして萌えました)書けば書くほどこの曲がイメソンにぴったりで驚いたのでしがないオタクの叫びとして共有させてください。</p>
       </div>
     </section>
-    <section class="song-card" id="4">
+    <section class="song-card" id="song24">
       <div class="song-meta">
         <span class="song-number">24</span>
         <div class="song-title">Gospelion in a classic love</div>
