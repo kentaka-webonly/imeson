@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>イメージソング企画 | 健啓Webオンリー</title>
+<style>
+:root{
+  --bg-1:#ffffff;
+  --bg-2:#fbf7fa;
+  --bg-3:#f4edf6;
+  --bg-4:#eee7f1;
+  --text:#2f2a31;
+  --sub:#675d69;
+  --accent:#8a6f88;
+  --accent-deep:#6f586d;
+  --accent-light:#f8f0f7;
+  --shadow:0 16px 40px rgba(83, 70, 86, .12);
+  --shadow-soft:0 8px 24px rgba(83, 70, 86, .08);
+  --border:rgba(125, 102, 122, .16);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  color:var(--text);
+  line-height:1.8;
+  font-family:"Hiragino Sans","Yu Gothic","Meiryo",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255,255,255,.98) 0 0, rgba(255,255,255,0) 24%),
+    radial-gradient(circle at 84% 12%, rgba(243,231,244,.72) 0 0, rgba(243,231,244,0) 24%),
+    radial-gradient(circle at 88% 70%, rgba(237,231,244,.62) 0 0, rgba(237,231,244,0) 24%),
+    linear-gradient(180deg, #ffffff 0%, #fcfafc 22%, #f6f1f8 62%, #efe8f2 100%);
+  overflow-x:hidden;
+  position:relative;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 70%, rgba(255,255,255,.78) 0 1px, transparent 2px),
+    radial-gradient(circle at 24% 32%, rgba(255,255,255,.84) 0 1px, transparent 2px),
+    radial-gradient(circle at 70% 18%, rgba(255,255,255,.78) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 86% 42%, rgba(255,255,255,.66) 0 1px, transparent 2px),
+    radial-gradient(circle at 62% 80%, rgba(255,255,255,.78) 0 1px, transparent 2px);
+  opacity:.72;
+  animation:twinkle 7s ease-in-out infinite;
+  z-index:0;
+}
+@keyframes twinkle{0%,100%{opacity:.45;}50%{opacity:.82;}}
+.bg-logo{
+  position:fixed;
+  left:50%;
+  bottom:-4vh;
+  transform:translateX(-50%);
+  width:min(1800px, 145vw);
+  max-width:none;
+  opacity:.24;
+  pointer-events:none;
+  z-index:1;
+  filter:drop-shadow(0 18px 34px rgba(0,0,0,.08)) brightness(1.02) contrast(1.04);
+}
+.page{position:relative; z-index:2;}
+.hero{
+  width:100%;
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.75));
+  box-shadow:0 14px 32px rgba(0,0,0,.12);
+  overflow:hidden;
+}
+.hero-image{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:min(72vh, 720px);
+  object-fit:contain;
+  object-position:center center;
+  margin:0 auto;
+  background:#f7f5f7;
+}
+.title-wrap{max-width:1100px; margin:0 auto; padding:26px 20px 0;}
+.page-title-box{
+  background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.8));
+  border:1px solid rgba(255,255,255,.92);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  padding:28px 24px 24px;
+  backdrop-filter:blur(10px);
+}
+.eyebrow{display:inline-block; margin-bottom:10px; padding:6px 12px; border-radius:999px; background:linear-gradient(135deg, #fbf4fb, #f1ebf6); color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.08em;}
+.page-title{
+  margin:0;
+  font-family:"Hiragino Sans","Yu Gothic","Meiryo","Noto Sans JP",sans-serif;
+  font-size:clamp(31px, 4.8vw, 54px);
+  font-weight:800;
+  line-height:1.24;
+  letter-spacing:.05em;
+  color:var(--accent-deep);
+}
+.thanks{margin-top:18px; padding:18px; border-radius:18px; background:linear-gradient(180deg, rgba(255,255,255,.88), rgba(251,246,251,.94)); border:1px solid var(--border); color:var(--sub); box-shadow:var(--shadow-soft); font-size:15.5px;}
+.thanks a{color:#6a4d88; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(106,77,136,.35);}
+.container{max-width:1100px; margin:0 auto; padding:34px 20px 90px;}
+.section-card, .song-list{background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.84)); border:1px solid rgba(255,255,255,.92); padding:28px 22px; border-radius:26px; box-shadow:var(--shadow); backdrop-filter:blur(10px);}
+.section-card{margin-bottom:38px;}
+.section-card h2, .song-list h2{margin:0 0 14px; font-size:24px; line-height:1.4;}
+.section-card p, .song-list p{margin:0; color:var(--sub); font-size:14px;}
+.playlist-box iframe{display:block; width:100%; min-height:380px; border:none; border-radius:18px; box-shadow:0 10px 22px rgba(0,0,0,.08); background:#fff; margin-top:16px;}
+.song-list{margin-bottom:60px;}
+.song-list p{margin-bottom:18px;}
+.song-grid{display:flex; flex-direction:column; gap:12px;}
+.song-grid a{display:block; text-decoration:none; color:var(--text); background:linear-gradient(180deg, rgba(255,255,255,.97), rgba(251,247,251,.97)); border:1px solid rgba(125, 102, 122, .14); border-radius:16px; padding:14px 16px; box-shadow:0 8px 18px rgba(83, 70, 86, .06); transition:transform .22s ease, box-shadow .22s ease, background .22s ease;}
+.song-grid a:hover{transform:translateY(-2px); box-shadow:0 14px 24px rgba(83, 70, 86, .1); background:linear-gradient(180deg, #fff, #faf5fb);}
+.song-grid .song-no{display:inline-block; min-width:2.4em; margin-right:8px; color:var(--accent); font-weight:700;}
+.song-grid .song-name{display:block; font-weight:700; font-size:16px;}
+.song-grid .song-artist{display:block; margin-top:2px; color:var(--sub); font-size:14px;}
+.song-card{background:linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.87)); border:1px solid rgba(255,255,255,.92); padding:28px 24px; border-radius:26px; margin-bottom:34px; box-shadow:var(--shadow); opacity:0; transform:translateY(34px); transition:all .75s ease; backdrop-filter:blur(8px);}
+.song-card.show{opacity:1; transform:none;}
+.song-meta{margin-bottom:14px;}
+.song-number{display:inline-block; margin-bottom:8px; padding:4px 10px; border-radius:999px; background:var(--accent-light); color:var(--accent); font-size:13px; font-weight:700;}
+.song-title{font-size:28px; line-height:1.35; font-weight:800; letter-spacing:.02em;}
+.artist{margin-top:4px; color:var(--sub); font-size:17px;}
+.player-wrap{margin-top:18px;}
+.player-wrap iframe{display:block; width:100%; aspect-ratio:16 / 9; min-height:220px; border:none; border-radius:18px; box-shadow:0 10px 22px rgba(0,0,0,.08); background:#fff;}
+.comment{margin-top:18px; background:linear-gradient(180deg, rgba(246,241,247,.95), rgba(243,238,245,.95)); border:1px solid rgba(125, 102, 122, .12); padding:16px 18px; border-radius:16px; color:#504851;}
+.comment-title{display:block; margin-bottom:8px; font-weight:700; color:#5a4a5c;}
+.comment p{margin:0 0 12px; white-space:normal;}
+.comment p:last-child{margin-bottom:0;}
+.lyric-quote{margin:14px 0; padding:14px 16px; border-left:4px solid #b592bc; border-radius:0 12px 12px 0; background:rgba(255,255,255,.62); color:#5b4f5d; font-style:italic; box-shadow:inset 0 0 0 1px rgba(181,146,188,.12);}
+.lyric-quote::before{content:"♪ 歌詞引用"; display:block; margin-bottom:8px; font-size:12px; font-weight:700; font-style:normal; color:#8a6f88; letter-spacing:.04em;}
+.footer{text-align:center; color:#7f7680; margin-top:52px; font-size:14px;}
+@media (max-width:768px){
+  .bg-logo{width:185vw; bottom:-1vh; opacity:.18;}
+  .hero-image{max-height:52vh;}
+  .title-wrap{padding:20px 14px 0;}
+  .page-title-box{padding:22px 16px 18px; border-radius:22px;}
+  .eyebrow{font-size:12px;}
+  .page-title{font-size:clamp(27px, 8vw, 40px); line-height:1.3; letter-spacing:.04em;}
+  .thanks{font-size:14px; line-height:1.9; padding:16px 14px;}
+  .container{padding:24px 14px 80px;}
+  .section-card, .song-list{padding:22px 16px; border-radius:22px;}
+  .section-card h2, .song-list h2{font-size:21px;}
+  .playlist-box iframe{min-height:300px;}
+  .song-grid a{padding:13px 14px;}
+  .song-card{padding:22px 16px; border-radius:22px; margin-bottom:26px;}
+  .song-title{font-size:23px;}
+  .artist{font-size:15px;}
+  .player-wrap iframe{min-height:200px;}
+  .comment{font-size:14px;}
+  .lyric-quote{padding:12px 14px;}
+}
+@media (max-width:480px){
+  .bg-logo{width:210vw; bottom:2vh; opacity:.16;}
+  .hero-image{max-height:44vh;}
+  .playlist-box iframe{min-height:260px;}
+  .song-grid .song-name{font-size:15px;}
+  .song-grid .song-artist{font-size:13px;}
+  .player-wrap iframe{min-height:180px;}
+}
+</style>
+</head>
+<body id="top">
+<img class="bg-logo" src="AEC70B7B-63B9-4BF9-BA3C-8923D76E6EBF_1_102_o.jpeg" alt="" aria-hidden="true" />
+<div class="page">
+  <header class="hero" aria-label="ヘッダー画像">
+    <img class="hero-image" src="header.jpeg" alt="健啓Webオンリー ヘッダー画像" onerror="this.style.display='none'">
+  </header>
+
+  <section class="title-wrap">
+    <div class="page-title-box">
+      <div class="eyebrow">健啓Webオンリー</div>
+      <h1 class="page-title">イメージソング企画</h1>
+      <div class="thanks">
+        素敵なイメージソングをたくさんご応募いただき、本当にありがとうございます。<br>
+        一曲一曲に込めていただいたお気持ちや解釈がとても嬉しく、拝見するたびに心があたたかくなっています。<br>
+        なお、企画は <strong>3/8 19:50まで</strong> 引き続き募集中です。<br>
+        「まだ送りたい曲がある」「この曲もぴったりかも」と思い浮かんだ方は、ぜひ
+        <a href="https://forms.gle/K7zp8oENj5YUy3yFA" target="_blank" rel="noopener noreferrer">こちらの応募フォーム</a>
+        からお気軽にご応募ください。
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="section-card playlist-box">
+      <h2>🎧 プレイリスト</h2>
+      <p>応募いただいた楽曲をまとめて楽しめるプレイリストです。</p>
+      <iframe
+        src="https://www.youtube.com/embed/videoseries?list=プレイリストID"
+        title="イメージソング企画 プレイリスト"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </section>
+
+    <section class="song-list">
+      <h2>🎵 イメージソング一覧</h2>
+      <p>気になる曲名をタップ・クリックすると、下の該当箇所へ移動します。</p>
+      <div class="song-grid">
+        <a href="#song1">
+          <span class="song-no">01</span>
+          <span class="song-name">フォニイ</span>
+          <span class="song-artist">ツミキ</span>
+        </a>
+        <a href="#song2">
+          <span class="song-no">02</span>
+          <span class="song-name">swamp</span>
+          <span class="song-artist">iri</span>
+        </a>
+        <a href="#song3">
+          <span class="song-no">03</span>
+          <span class="song-name">Rather Be</span>
+          <span class="song-artist">△Clean Bandit</span>
+        </a>
+        <a href="#song4">
+          <span class="song-no">04</span>
+          <span class="song-name">Sugar</span>
+          <span class="song-artist">Maroon 5</span>
+        </a>
+        <a href="#song5">
+          <span class="song-no">05</span>
+          <span class="song-name">餃子</span>
+          <span class="song-artist">TOMOO</span>
+        </a>
+        <a href="#song6">
+          <span class="song-no">06</span>
+          <span class="song-name">白日</span>
+          <span class="song-artist">King Gnu</span>
+        </a>
+        <a href="#song7">
+          <span class="song-no">07</span>
+          <span class="song-name">二人セゾン</span>
+          <span class="song-artist">欅坂46</span>
+        </a>
+        <a href="#song8">
+          <span class="song-no">08</span>
+          <span class="song-name">光の街</span>
+          <span class="song-artist">back number</span>
+        </a>
+        <a href="#song9">
+          <span class="song-no">09</span>
+          <span class="song-name">Story</span>
+          <span class="song-artist">AI</span>
+        </a>
+        <a href="#song10">
+          <span class="song-no">10</span>
+          <span class="song-name">雲路の果て</span>
+          <span class="song-artist">Cocco</span>
+        </a>
+        <a href="#song11">
+          <span class="song-no">11</span>
+          <span class="song-name">cali≠gari</span>
+          <span class="song-artist">冷たい雨</span>
+        </a>
+        <a href="#song12">
+          <span class="song-no">12</span>
+          <span class="song-name">Ms.OOJA</span>
+          <span class="song-artist">30</span>
+        </a>
+        <a href="#song13">
+          <span class="song-no">13</span>
+          <span class="song-name">Acid Black Cherry</span>
+          <span class="song-artist">未来予想図Ⅱ</span>
+        </a>
+        <a href="#song14">
+          <span class="song-no">14</span>
+          <span class="song-name">義務のように</span>
+          <span class="song-artist">坂本慎太郎</span>
+        </a>
+        <a href="#song15">
+          <span class="song-no">15</span>
+          <span class="song-name">まなざしは光</span>
+          <span class="song-artist">キタニタツヤ</span>
+        </a>
+        <a href="#song16">
+          <span class="song-no">16</span>
+          <span class="song-name">ある男</span>
+          <span class="song-artist">エイハブ</span>
+        </a>
+        <a href="#song17">
+          <span class="song-no">17</span>
+          <span class="song-name">瞼の裏のアトリエ、光のカーテンは夜を包む</span>
+          <span class="song-artist">こんにちは谷田さん</span>
+        </a>
+        <a href="#song18">
+          <span class="song-no">18</span>
+          <span class="song-name">ド屑</span>
+          <span class="song-artist">なきそ</span>
+        </a>
+        <a href="#song19">
+          <span class="song-no">19</span>
+          <span class="song-name">終列車</span>
+          <span class="song-artist">椿屋四重奏</span>
+        </a>
+        <a href="#song20">
+          <span class="song-no">20</span>
+          <span class="song-name">LOVER</span>
+          <span class="song-artist">椿屋四重奏</span>
+        </a>
+        <a href="#song21">
+          <span class="song-no">21</span>
+          <span class="song-name">sneer</span>
+          <span class="song-artist">こめだわら</span>
+        </a>
+        <a href="#song22">
+          <span class="song-no">22</span>
+          <span class="song-name">熱異常</span>
+          <span class="song-artist">いよわ</span>
+        </a>
+        <a href="#song23">
+          <span class="song-no">23</span>
+          <span class="song-name">循環</span>
+          <span class="song-artist">HoneyComeBear</span>
+        </a>
+        <a href="#song24">
+          <span class="song-no">24</span>
+          <span class="song-name">Gospelion in a classic love</span>
+          <span class="song-artist">The 13th tailor</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="song-card" id="song1">
+      <div class="song-meta">
+        <span class="song-number">01</span>
+        <div class="song-title">フォニイ</div>
+        <div class="artist">ツミキ</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/9QLT1Aw_45s"
+          title="フォニイ - ツミキ"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>美咲さんを失い、健人に復讐をしてる時の啓史の心情にとても合致してるなと思っているイメソンです。<br></p>
+<blockquote class="lyric-quote">簡単なことも解らないわ あたしって何だっけ</blockquote>
+<p><br>とか、EndDを思い浮かべて毎回胸が苦しくなります。</p>
+      </div>
+    </section>
+    <section class="song-card" id="song2">
+      <div class="song-meta">
+        <span class="song-number">02</span>
+        <div class="song-title">swamp</div>
+        <div class="artist">iri</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/k-5drkaQVoU"
+          title="swamp - iri"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>歌詞が全体的に健啓なのですが、 冒頭の<br></p>
+<blockquote class="lyric-quote">目覚めたばかりの 無意識と<br>なぞらせる 投げやりな儀式よ</blockquote>
+<p><br>が芳野による籠絡のこと！？！となってます。 最後の <br></p>
+<blockquote class="lyric-quote">見失ったって 引き裂かれあって<br>強くなる愛情を<br>睨んでも<br>味わってしまうから<br>逃げれない Get away<br>旅立ちたくて 壊し合う代償を<br>悔やんでも 汚せぬ君の明日</blockquote>
+<p> <br>もかなり再会後の健啓です。</p>
+      </div>
+    </section>
+    <section class="song-card" id="song3">
+      <div class="song-meta">
+        <span class="song-number">03</span>
+        <div class="song-title">Rather Be</div>
+        <div class="artist">△Clean Bandit</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/m-M1AtrxztU"
+          title="Rather Be - △Clean Bandit"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>全体的に健人くんにしっくりくる歌詞なのですが、特に曲を通してリフレインされている<br></p>
+<blockquote class="lyric-quote">When I am with you ,there&#x27;s no place I&#x27;d rather be」(あなたと一緒にいる時、これ以上の場所はない)</blockquote>
+<p><br>が、芳野先生と猫2匹がいるあの家に安寧を見出してる健人くんを思わせるので選びました。 <br>Bメロからのドラマチックなピアノのメロディも、一言では表せない二人のこれまでの人生と展望が見え出して来たこれからの未来に合うんじゃないかなと思います。</p>
+      </div>
+    </section>
+    <section class="song-card" id="song4">
+      <div class="song-meta">
+        <span class="song-number">04</span>
+        <div class="song-title">Sugar</div>
+        <div class="artist">Maroon 5</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/09R8_2nJtjg"
+          title="Sugar - Maroon 5"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>健人くんが甘いもの好きそうだから選びました。あなたがいないと僕はダメなんだよ、ほんの少しでいいから甘い愛をちょうだいみたいな歌詞なんですけど、芳野先生にどっかいかれて泣いてた健人くんを思わせ…ませんか？笑<br>あと芳野啓史は南カルフォルニアのどの砂浜よりもホットな男なので。</p>
+      </div>
+    </section>
+    <section class="song-card" id="song5">
+      <div class="song-meta">
+        <span class="song-number">05</span>
+        <div class="song-title">餃子</div>
+        <div class="artist">TOMOO</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/Glw6JYoW-IY"
+          title="餃子 - TOMOO"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>正直曲名が一番の理由です…が、餃子を<br></p>
+<blockquote class="lyric-quote">なんでもない顔をしていても、何かしらの苦しい思いを抱えてる</blockquote>
+<p><br>人間に見立てている歌詞は芳野先生に通じるものを感じたため挙げました。</p>
+      </div>
+    </section>
+    <section class="song-card" id="song6">
+      <div class="song-meta">
+        <span class="song-number">06</span>
+        <div class="song-title">白日</div>
+        <div class="artist">King Gnu</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/ony539T074w"
+          title="白日 - King Gnu"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>歌詞の中で繰り返し登場する「降りしきる雪」というイメージは、ゲームの舞台となる季節とは実際には一致していませんが、その中には健人が「改心して正常な世界で生きたい」という気持ちや、啓史が「自分の本当の目的を隠している」という考えが込められているかもしれません。<br>健人は啓史の影響を受けた後、他の人と結ばれるendingや、真実を知った後に啓史を探しに行くendingが、それぞれ歌詞の一部に対応していると思うと、この歌は健啓にとって非常にぴったりなイメソンだと感じます。</p>
+      </div>
+    </section>
+    <section class="song-card" id="song7">
+      <div class="song-meta">
+        <span class="song-number">07</span>
+        <div class="song-title">二人セゾン</div>
+        <div class="artist">欅坂46</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/mNpPQXMgtmw"
+          title="二人セゾン - 欅坂46"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>「セゾン」とはフランス語で「季節」という意味なのですが、春夏秋冬の季節を過ごす歌詞がlessonに重なりました。二人の世界という印象の歌詞なので、ほぼ二人だけで展開されるlessonを彷彿とさせます。また、歌詞の「生まれ変わる」という要素が健人に、感情や大切なものを思い出していく要素が啓史に重なりました。</p>
+      </div>
+    </section>
+    <section class="song-card" id="song8">
+      <div class="song-meta">
+        <span class="song-number">08</span>
+        <div class="song-title">光の街</div>
+        <div class="artist">back number</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/XlDxdScPdag"
+          title="光の街 - back number"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>サビの<br></p>
+<blockquote class="lyric-quote">君は知っているのだろうか こんなにも救われている僕を</blockquote>
+<p><br>が健人視点に重なると思います（もしかしたら啓史にとってもそうかもしれない）。何気ない日常の幸せを描く歌詞や、温かい曲調もlessonの雰囲気に合っていると思います。</p>
+      </div>
+    </section>
+    <section class="song-card" id="song9">
+      <div class="song-meta">
+        <span class="song-number">09</span>
+        <div class="song-title">Story</div>
+        <div class="artist">AI</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/B2fPYlGKdXM"
+          title="Story - AI"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>温かい曲調がlessonのイメージに合うと思いました。また、辛い過去を乗り越えて、二人で寄り添いながら生きていくような歌詞を健啓に重ねてしまいます。</p>
+      </div>
+    </section>
+    <section class="song-card" id="song10">
+      <div class="song-meta">
+        <span class="song-number">10</span>
+        <div class="song-title">雲路の果て</div>
+        <div class="artist">Cocco</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/C9fa0_jDay0"
+          title="雲路の果て - Cocco"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>歌詞の幼い少女のイメージと幼さを持つ健人のイメージがうっすら重なり、また<br></p>
+<blockquote class="lyric-quote">この目さえ光を知らなければ 見えなくていいものがあったよ<br>からだがあなたを知らなければ 引きずる想い出もなかった</blockquote>
+<p><br>の部分にエンドBD後に遺された健人を思い浮かべました</p>
+      </div>
+    </section>
+    <section class="song-card" id="song11">
+      <div class="song-meta">
+        <span class="song-number">11</span>
+        <div class="song-title">cali≠gari</div>
+        <div class="artist">冷たい雨</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/CKmOevbQwsM"
+          title="cali≠gari - 冷たい雨"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>健人を表す曲</p>
+      </div>
+    </section>
+    <section class="song-card" id="song12">
+      <div class="song-meta">
+        <span class="song-number">12</span>
+        <div class="song-title">Ms.OOJA</div>
+        <div class="artist">30</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/Pi4wZMaJwkI"
+          title="Ms.OOJA - 30"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>啓史を表す曲</p>
+      </div>
+    </section>
+    <section class="song-card" id="song13">
+      <div class="song-meta">
+        <span class="song-number">13</span>
+        <div class="song-title">Acid Black Cherry</div>
+        <div class="artist">未来予想図Ⅱ</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/plVTGYuQzpQ"
+          title="Acid Black Cherry - 未来予想図Ⅱ"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>二人の未来への願いを込めた曲</p>
+      </div>
+    </section>
+    <section class="song-card" id="song14">
+      <div class="song-meta">
+        <span class="song-number">14</span>
+        <div class="song-title">義務のように</div>
+        <div class="artist">坂本慎太郎</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/WY6etv7ROc8"
+          title="義務のように - 坂本慎太郎"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>なれあい〜の辺りの啓史。<br></p>
+<blockquote class="lyric-quote">ゆっくり溶け出していく/大切なものがひとつづつ/ああ それを見ている/何もできずに</blockquote>
+<p><br>↑これ啓史 <br></p>
+<blockquote class="lyric-quote">義務のようにほほえんで/義務のようにうつろ</blockquote>
+<p><br>↑とても啓史<br>曲調のダウナーなのに色気のある感じ自体がなれあい〜の啓史っぽいと思います</p>
+      </div>
+    </section>
+    <section class="song-card" id="song15">
+      <div class="song-meta">
+        <span class="song-number">15</span>
+        <div class="song-title">まなざしは光</div>
+        <div class="artist">キタニタツヤ</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/taQW1Dd7Es8"
+          title="まなざしは光 - キタニタツヤ"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>Eエンドのルートの健啓のエンディングソング枠です。<br>1番は健人視点で、2番は啓史視点になればいいなと願ってやまない。啓史が健人に手を差し伸べて自立させてくれた事実は事実だし光であることは間違いないし、それと共に啓史も健人に教育を施すことで教育者だった自分を取り戻していったこともあってほしい。エンド後解放シーンの健人の眩しさを感じている啓史は存在してるので</p>
+      </div>
+    </section>
+    <section class="song-card" id="song16">
+      <div class="song-meta">
+        <span class="song-number">16</span>
+        <div class="song-title">ある男</div>
+        <div class="artist">エイハブ</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/WJUQx1NEFrM"
+          title="ある男 - エイハブ"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>再会のルートに至る辺りの啓史っぽい。2番からは健人もあるし、ラスサビは健人の力強さがあるなと思う</p>
+      </div>
+    </section>
+    <section class="song-card" id="song17">
+      <div class="song-meta">
+        <span class="song-number">17</span>
+        <div class="song-title">瞼の裏のアトリエ、光のカーテンは夜を包む</div>
+        <div class="artist">こんにちは谷田さん</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/5Y3MzwuK51o"
+          title="瞼の裏のアトリエ、光のカーテンは夜を包む - こんにちは谷田さん"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>1番は啓史視点の健人。ラスサビ前<br></p>
+<blockquote class="lyric-quote">僕が知らなかったはずの風景にずっと浴槽のように浸っている、君の手に触れたかった</blockquote>
+<p><br>からは再会に至る健人視点になってほしい</p>
+      </div>
+    </section>
+    <section class="song-card" id="song18">
+      <div class="song-meta">
+        <span class="song-number">18</span>
+        <div class="song-title">ド屑</div>
+        <div class="artist">なきそ</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/5XehRIb81k8"
+          title="ド屑 - なきそ"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>初挿入のときの怒り啓史のBGMというかこれだったらドエロいな〜〜〜〜〜ソングです<br> </p>
+<blockquote class="lyric-quote">待ったをかけた ちょっとためらった<br>なんだ なんだ なんなんだあんた</blockquote>
+<p><br>は健人セリフっぽくもあってふふってなります</p>
+      </div>
+    </section>
+    <section class="song-card" id="song19">
+      <div class="song-meta">
+        <span class="song-number">19</span>
+        <div class="song-title">終列車</div>
+        <div class="artist">椿屋四重奏</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/SQ-Bdh8NP0Y"
+          title="終列車 - 椿屋四重奏"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>全体的にB/Dの啓史を感じますが、<br> </p>
+<blockquote class="lyric-quote">在りもしない答えに<br>取り憑かれた俺の結末は見えている<br>結ばれているようなその思い違いが<br>仕合わせと言うのなら</blockquote>
+<p> <br>はめっちゃB/D啓史から健人への視線を感じます</p>
+      </div>
+    </section>
+    <section class="song-card" id="song20">
+      <div class="song-meta">
+        <span class="song-number">20</span>
+        <div class="song-title">LOVER</div>
+        <div class="artist">椿屋四重奏</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/ijfkZBmYsAc"
+          title="LOVER - 椿屋四重奏"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>Eエンドルートの健人（再会時）はこのくらいの愛の深さで啓史を抱けます</p>
+      </div>
+    </section>
+    <section class="song-card" id="song21">
+      <div class="song-meta">
+        <span class="song-number">21</span>
+        <div class="song-title">sneer</div>
+        <div class="artist">こめだわら</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/dfFmmno19jc"
+          title="sneer - こめだわら"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>啓史だなぁと思いながら聴いてます。<br> </p>
+<blockquote class="lyric-quote">おかしなことをひたすら繰り返して<br>誰かがそれを嘲笑う<br>他人事のように嘲笑う</blockquote>
+<p> <br>がなれあい〜の啓史すぎるので</p>
+      </div>
+    </section>
+    <section class="song-card" id="song22">
+      <div class="song-meta">
+        <span class="song-number">22</span>
+        <div class="song-title">熱異常</div>
+        <div class="artist">いよわ</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/b2NTglk9tvI"
+          title="熱異常 - いよわ"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>イメソンというか脳内でMADが再生されています 。<br></p>
+<blockquote class="lyric-quote">電撃と見紛うような〜黒い星が彼らを見ている</blockquote>
+<p><br>…美咲さんを喪った頃の啓史 。「黒い星が彼らを見ている」は裁判で健人の姿を見ている啓史のスチルの目 <br></p>
+<blockquote class="lyric-quote">哭いた閃光が目に刺さる〜黒い星が私を見ている</blockquote>
+<p><br>…復讐計画を始め、健人に会う啓史 。「黒い星が私を見ている」はパッケージの健人の死んだ目<br></p>
+<blockquote class="lyric-quote">死んだ変数で繰り返す〜すぐそこまで何かが来ている</blockquote>
+<p><br>…本編〜D（B）エンド 。</p>
+<blockquote class="lyric-quote">燕が描いた軌跡を/なぞるように灰色の雲が来ている</blockquote>
+<p>は健人が人間らしくなるにつれて膨らむ啓史の希死念慮<br></p>
+<blockquote class="lyric-quote">編んだ名誉で明日を乞う/希望で手が汚れてる/あなたの澄んだ瞳の色をした星に問いかけている</blockquote>
+<p><br>この部分がかなり濃い目にDエンド直前の啓史を感じる。1番の「あなた」は多分美咲さんだけどこの2番の「あなた」は健人だと思う 。<br>『現実じゃないこんなの』の繰り返しはBエンド発見時の健人とDエンド直前の日々の幸せと本来の目的で離脱症状起きてる啓史の内なる囁きがダブると味が濃い</p>
+      </div>
+    </section>
+    <section class="song-card" id="song23">
+      <div class="song-meta">
+        <span class="song-number">23</span>
+        <div class="song-title">循環</div>
+        <div class="artist">HoneyComeBear</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/FLYiy5u74sE"
+          title="循環 - HoneyComeBear"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>前半は一周目のEnd:Bまでの健人目線でのイメージで、<br></p>
+<blockquote class="lyric-quote">言葉ひとつで ひとつになって　孤独の味は忘れたようだ<br>くだんねえとか高をくくった　余所見するようになった</blockquote>
+<p><br>がほんとに健人の啓史に対しての感情の変化にぴったりで... <br></p>
+<blockquote class="lyric-quote">それはまるで 熱のように　呪いのように 巡るだけ</blockquote>
+<p><br>の部分から、あらたなつづきに繋がってるな～と勝手に思ってます。 <br><br></p>
+<blockquote class="lyric-quote">循環する 薄荷のにおいが分かるかい 息吹が、分かるかい</blockquote>
+<p><br></p>
+<blockquote class="lyric-quote">それはやがて 酸素にのり 血汐にのり 巡り合う息を継いだ先の日々が 苦しくても 喘いで すがったらいい</blockquote>
+<p><br>の部分がまさにあらたなつづきの「再開」を彷彿とさせる歌詞で勝手に涙ぐんでます。<br><br></p>
+<blockquote class="lyric-quote">繰り返して そこで君が応えるから僕の呼吸は 続いていくんだ 続いていくんだ</blockquote>
+<p><br>の歌詞がEnd:Eの先の未来を見せてもらってるみたいで感無量です...。(この曲を作ったアーティストさんには誠に申し訳ないですが...勝手にイメソンにして萌えました)書けば書くほどこの曲がイメソンにぴったりで驚いたのでしがないオタクの叫びとして共有させてください。</p>
+      </div>
+    </section>
+    <section class="song-card" id="song24">
+      <div class="song-meta">
+        <span class="song-number">24</span>
+        <div class="song-title">Gospelion in a classic love</div>
+        <div class="artist">The 13th tailor</div>
+      </div>
+
+      <div class="player-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/xMA0SLlW3hk"
+          title="Gospelion in a classic love - The 13th tailor"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="comment">
+        <span class="comment-title">💬 コメント</span>
+        <p>妻の自死からずっと孤独で空虚だった彼の心境と、芳野視点のEnd:D直前の雰囲気に合う曲だと思い紹介させていただきました。</p>
+      </div>
+    </section>
+
+    <footer class="footer">健啓Webオンリー企画</footer>
+  </main>
+</div>
+<script>
+const cards = document.querySelectorAll('.song-card');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+cards.forEach((card) => observer.observe(card));
+</script>
+</body>
+</html>
